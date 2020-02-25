@@ -3,4 +3,6 @@ class Category < ApplicationRecord
   has_many :bookings
   validates :name, :description, presence: true
   validates :price, presence: true,  numericality: { only_integer: false }
+  CATEGORIES = ["Grandpa/Grandma", "Teenager", "Child", "University", "Father", "Mother", "Brother", "Sister"]
+
 end

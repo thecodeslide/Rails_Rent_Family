@@ -1,0 +1,26 @@
+<h1>Bookings#index</h1>
+
+
+<% @bookings.each do |x| %>
+
+  <h4>Start Date</h5>
+  <p><%= x.start_date %></p>
+  <h5>End Date</h5>
+  <p><%= x.end_date %></p>
+
+<% end %>
+
+<% if policy(Booking).create? %>
+  <%#= link_to 'New Booking', 'http://localhost:3000/bookings/new.html' %>
+  <%= link_to 'New Booking', new_category_booking_path %>
+<% end %>
+
+<% @bookings.each do |booking| %>
+  <% if policy(booking).edit? %>
+    <%= link_to "Update", new_category_booking_path(booking) %>
+  <% end %>
+<% end %>
+
+
+
+

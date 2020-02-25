@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- has_many :categories
+  has_many :categories
   has_many :bookings
   validates :first_name, :last_name, :location, :gender, :status, presence: true
   validates :age, presence: true,  numericality: { only_integer: true }

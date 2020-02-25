@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :categories
   has_many :bookings
-  validates :first_name, :last_name, :location, :gender, :status, presence: true
+  validates :first_name, :last_name, :location, :gender, :active, presence: true
   validates :age, presence: true,  numericality: { only_integer: true }
 end

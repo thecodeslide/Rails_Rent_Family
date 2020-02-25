@@ -4,5 +4,5 @@ class Category < ApplicationRecord
   validates :name, :description, presence: true
   validates :price, presence: true,  numericality: { only_integer: false }
   CATEGORIES = ["Grandpa/Grandma", "Teenager", "Child", "University", "Father", "Mother", "Brother", "Sister"]
-
+  has_one_attached :photo
 end

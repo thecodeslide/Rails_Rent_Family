@@ -2,5 +2,8 @@
 <p><%= @category.name  %></p>
 <p><%= @category.description %></p>
 <p><%= @category.price %></p>
-<%= cl_image_tag @category.photo.key, height 300, width 400, crop: :fill %>
+<% if  @category.photo.attached? %>
+  <%= cl_image_path @category.photo.key, height: 300, width: 400, crop: :fill %>
+<% else %>
+<% end %>
 <%= link_to 'edit', edit_category_path  %>

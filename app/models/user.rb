@@ -3,9 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
- has_many :categories
+  GENDER = ["Male", "Female"]
+  PERSONALITY = ["movie", "reading", "chatting", "walk", "sightsee", "eating", "skiing", "sleeping", "scubadiving", "extreme sports", "cooking", "drinking" ]
+  has_many :categories
   has_many :bookings
-  validates :first_name, :last_name, :location, :gender, :status, presence: true
+  validates :first_name, :last_name, :location, :gender, presence: true
   validates :age, presence: true,  numericality: { only_integer: true }
 end

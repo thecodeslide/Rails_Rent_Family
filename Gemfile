@@ -15,6 +15,8 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'acts-as-taggable-on', '~> 6.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

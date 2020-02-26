@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :bookings
   validates :first_name, :last_name, :location, :gender, presence: true
   validates :age, presence: true,  numericality: { only_integer: true }
+  has_one_attached :photo
 end

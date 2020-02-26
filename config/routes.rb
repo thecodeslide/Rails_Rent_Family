@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :categories, only: [:show, :index, :new, :create, :edit, :update] do
     resources :bookings, only: [:index, :update, :create, :new]
   end
-  resources :users, only: :show
+  get 'my_page', to: 'users#my_page', as: :my_page
 end

@@ -11,7 +11,10 @@ class ApplicationPolicy
   end
 
   def show?
-    false
+    # raise
+    # scope.where(:id => record.id).exists?
+    true
+    # raise
   end
 
   def create?
@@ -46,4 +49,6 @@ class ApplicationPolicy
       scope.all
     end
   end
+
+
 end

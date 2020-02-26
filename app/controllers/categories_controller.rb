@@ -1,7 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
-    @categories = Category.where(user: current_user)
+    @categories = Category.all
   end
 
   def show

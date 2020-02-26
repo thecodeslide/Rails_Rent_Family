@@ -1,18 +1,18 @@
 
 <!-- <p>Find me in app/views/bookings/new.html.erb</p> -->
 
-<%= simple_form_for [@category, @booking] do |f| %>
+<%= simple_form_for [@user, @category, @booking], do |f| %>
   <div class="form-group">
     <%= f.input :start_date, as: :date, html5: true %>
   </div>
   <div class="form-group">
     <%= f.input :end_date, as: :date, html5: true %>
   </div>
-  <!-- <div class="form-group">
-    <%#= f.input :category, collection: Booking::CATEGORIES %>
-  </div> -->
+  <div class="form-group">
+    <%= f.input :category, collection: Booking::CATEGORIES %>
+  </div>
   <div class="form-group">
     <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
-<p><%= link_to "BACK", category_path(@category) %></p>
+<p><%= link_to "BACK", category_booking_index_path %></p>

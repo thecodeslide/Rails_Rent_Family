@@ -1,19 +1,14 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update]
-  skip_before_action :authenticate_user!, only: [:index, :show]
-
   def index
-    @categories = policy_scope(Category.all)
+    @categories = Category.all
   end
 
   def show
-    set_category
   end
 
   def new
-    # raise
     @category = Category.new
-    authorize @category
   end
 
   def create
@@ -41,7 +36,6 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
-    authorize @category
   end
 
   def category_params

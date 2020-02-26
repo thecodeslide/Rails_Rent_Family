@@ -1,10 +1,14 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = policy_scope(Booking).order(created_at: :desc)
+    @bookings = policy_scope(current_user.bookings)
+    @booking = Booking.new
+    @categories = Category.where(user: @current_user)
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
+    @category = set_category
   end
 
   def show
@@ -12,16 +16,26 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = current_user.bookings.new(booking_params)
+    @category = set_category
+    @booking.user = current_user
+    @booking.category = @category
     if @booking.save
-      redirect_to category_bookings_index_path(@booking)
+      redirect_to category_bookings_path(@booking)
     else
       render :new
     end
   end
 
   def edit
-    set_booking
+  end
+
+  def update
+    # if @booking.update(booking_params)
+    #   redirect_to category_booking_path
+    # else
+    #   render :edit
+    # end
   end
 
   private
@@ -32,5 +46,10 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
+  def set_category
+    Category.find(params[:category_id])
   end
 end

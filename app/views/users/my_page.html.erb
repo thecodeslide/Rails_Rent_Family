@@ -1,25 +1,7 @@
 <div class="h1-index-category">
   <h1>My Services</h1>
 </div>
+<%= render 'shared/tabs' %>
 
-<div class="cards-home">
-  <% @categories.each do |category|  %>
-      <div class="card-product">
-  <% photo = category.photo.attached? ? cl_image_tag(category.photo.key, height: 300, width: 400, crop: :fill) : image_tag('https://ewedit.files.wordpress.com/2019/01/hacx09_624_02a-0065.jpg') %>
-      <%= photo %>
-
-  <div class="card-product-infos">
-    <h2><%= category.name  %></h2>
-    <p><%= category.description %></p>
-    <p>￥<%= category.price %></p>
-    <div class="d-flex justify-content-end">
-      <%= link_to edit_category_path(category), id: "button-edit" do %>
-        <i class="far fa-edit"></i>
-      <% end %>
-    </div>
-  </div>
-</div>
-  <% end %>
-</div>
 
 

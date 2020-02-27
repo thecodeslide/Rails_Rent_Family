@@ -8,6 +8,7 @@
 require 'faker'
 require "open-uri"
 puts "Destroying everything"
+Booking.destroy_all
 Category.destroy_all
 User.destroy_all
 gender = ["male", "female"]
@@ -62,4 +63,5 @@ end
 
 
 puts "done"
+
 

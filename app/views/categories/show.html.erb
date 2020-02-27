@@ -1,6 +1,10 @@
 <div class="container-show">
+  <% if current_user.photo.attached? %>
+  <%= cl_image_tag current_user.photo.key %>
+  <% else %>
+  <% end %>
   <div class="card-product">
-  <% if  @category.photo.attached? %>
+    <% if  @category.photo.attached? %>
       <%= cl_image_tag @category.photo.key, height: 300, width: 400, crop: :fill %>
     <% else %>
     <% end %>

@@ -1,18 +1,19 @@
-<div class="h1-index-category">
+ <div class="h1-index-category">
   <h1>Services</h1>
 </div>
-
-<div class="cards-home">
+<div class="cards-category-index">
   <% @categories.each do |category|  %>
-
-  <div class="card-product-infos">
-    <h2><%= category.name  %></h2>
-    <p><%= category.description %></p>
-    <p>￥<%= category.price %></p>
-    <div class="d-flex justify-content-end">
-      <%= link_to edit_category_path(category), id: "button-edit" do %>
-        <i class="far fa-plus-square"></i>
-      <% end %>
+  <div class="card-product">
+    <%= cl_image_tag(category.photo.key, width: 300, height: 300, crop: :fill) %>
+    <div class="card-product-infos">
+      <h2><%= category.name  %></h2>
+      <p><%= category.description %></p>
+      <p>￥<%= category.price %></p>
+      <div class="d-flex justify-content-end">
+        <%= link_to category_path(category), id: "button-edit" do %>
+          <i class="far fa-plus-square"></i>
+        <% end %>
+      </div>
     </div>
     <div
   id="map"
@@ -21,10 +22,5 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
-</div>
   <% end %>
-
-</div>
-
-
 </div>

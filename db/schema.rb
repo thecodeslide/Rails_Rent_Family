@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_014931) do
     t.string "gender"
     t.integer "age"
     t.string "personality"
-    t.boolean "active", default: true
+    t.boolean "active"
     t.boolean "admin"
     t.float "latitude"
     t.float "longitude"

@@ -8,16 +8,43 @@
 
 
 <div class="cards-home">
-  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images-na.ssl-images-amazon.com/images/I/91oKRLyYaeL._SY355_.png)">
+  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("grandpa", height: 200, width: 200, crop: :fill)%>)">
     Grandpa
+    <%= link_to "", categories_path(category: "Grandpa"), class: "card-link" %>
   </div>
 
-  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://i.pinimg.com/originals/50/3f/72/503f7261e848bf5780acf7cd655617b1.jpg)">
+  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("teenager", height: 200, width: 200, crop: :fill)%>)">
+    Teenager
+    <%= link_to "", categories_path(category: "Teenager"), class: "card-link" %>
+  </div>
+
+  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("kid", height: 100, width: 100, crop: :fill)%>)">
+    Child
+    <%= link_to "", categories_path(category: "Kid"), class: "card-link" %>
+  </div>
+
+  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("university", height: 200, width: 200, crop: :fill)%>)">
     University
+    <%= link_to "", categories_path(category: "University"), class: "card-link" %>
   </div>
 
-  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://m.media-amazon.com/images/M/MV5BODUxNzE5MDI1NV5BMl5BanBnXkFtZTgwNTAwNzE2MzI@._V1_CR0,59,640,360_AL_UX477_CR0,0,477,268_AL_.jpg)">
+  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("father", height: 200, width: 200, crop: :fill)%>)">
+    Father
+    <%= link_to "", categories_path(category: "Father"), class: "card-link" %>
+  </div>
+
+  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("mother", height: 200, width: 200, crop: :fill)%>)">
+    Mother
+    <%= link_to "", categories_path(category: "Mother"), class: "card-link" %>
+  </div>
+
+  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("brother", height: 200, width: 200, crop: :fill)%>)">
     Brother
+    <%= link_to "", categories_path(category: "Brother"), class: "card-link" %>
+  </div>
+
+  <div class="card-category-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path("sister", height: 200, width: 200, crop: :fill)%>)">
+    Sister
+    <%= link_to "", categories_path(category: "Sister"), class: "card-link" %>
   </div>
 </div>
-

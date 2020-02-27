@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <h1>Search Result</h1>
+        <% @users.each do |user| %>
+          <div>
+            <p><%= "---------------" %></p>
+            <p>Name: <%= user.first_name %> <%= user.last_name %></p>
+            <p>Location: <%= user.location %></p>
+            <p>Gender: <%= user.gender %></p>
+            <p>Age: <%= user.age %></p>
+            <p>Personality: <%= user.personality %></p>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

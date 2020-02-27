@@ -5,4 +5,18 @@ class Category < ApplicationRecord
   validates :price, presence: true,  numericality: { only_integer: false }
   CATEGORIES = ["Grandpa/Grandma", "Teenager", "Child", "University", "Father", "Mother", "Brother", "Sister"]
   has_one_attached :photo
+
+
+  # include PgSearch::Model
+  # pg_search_scope :global_sewarch,
+  #   against:[:name, :description, :price],
+  #   associated_against: {
+  #     users:[:first_name, :last_name]
+  #   },
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

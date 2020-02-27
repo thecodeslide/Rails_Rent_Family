@@ -1,32 +1,11 @@
-<div class="cards-home">
   <% @categories.each do |category|  %>
-      <div class="card-product">
-  <% photo = category.photo.attached? ? cl_image_tag(category.photo.key, height: 300, width: 400, crop: :fill) : image_tag('https://ewedit.files.wordpress.com/2019/01/hacx09_624_02a-0065.jpg') %>
-      <%= photo %>
 
-  <div class="card-product-infos">
-    <h2><%= category.name  %></h2>
-    <p><%= category.description %></p>
-    <p><%= category.price %></p>
-    <%= link_to edit_category_path(category), id: "button-edit" do %>
-      <i class="far fa-edit"></i>
-    <% end %>
-  </div>
-</div>
+  <%= link_to category_path(category) do %>
+       <%= category.name %>
   <% end %>
-</div>
-<div class="footer-f">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    <strong>MADE BY GARBIN</strong>
-  </div>
-</div>
-
-
+  <% if  category.photo.attached? %>
+    <%= cl_image_path category.photo.key, height: 300, width: 400, crop: :fill %>
+  <% else %>
+  <% end %>
+<% end %>
 

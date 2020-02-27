@@ -1,11 +1,20 @@
+<div class="h1-index-category">
+  <h1>Categories</h1>
+</div>
+
+<div class="cards-home">
   <% @categories.each do |category|  %>
 
-  <%= link_to category_path(category) do %>
-       <%= category.name %>
+  <div class="card-product-infos">
+    <h2><%= category.name  %></h2>
+    <p><%= category.description %></p>
+    <p>￥<%= category.price %></p>
+    <div class="d-flex justify-content-end">
+      <%= link_to edit_category_path(category), id: "button-edit" do %>
+        <i class="far fa-plus-square"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
   <% end %>
-  <% if  category.photo.attached? %>
-    <%= cl_image_path category.photo.key, height: 300, width: 400, crop: :fill %>
-  <% else %>
-  <% end %>
-<% end %>
-
+</div>

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.geocoded #returns flats with coordinates
 
@@ -9,4 +10,10 @@ class UsersController < ApplicationController
       }
     end
   end
+
+
+  def my_page
+    @categories = current_user.categories
+  end
+
 end

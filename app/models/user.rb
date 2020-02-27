@@ -12,7 +12,17 @@ class User < ApplicationRecord
   validates :age, presence: true,  numericality: { only_integer: true }
   has_one_attached :photo
 
-    geocoded_by :location
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against:[:first_name, :last_name, :location, :age, :gender, :personality],
+    associated_against: {
+      categories:[:name]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+  
+  geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
 end

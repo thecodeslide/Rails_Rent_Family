@@ -9,6 +9,10 @@ class CategoryPolicy < ApplicationPolicy
     true
   end
 
+  # def my_page?
+  #   record.user == user
+  # end
+
   def create?
     # return true
     user.present?

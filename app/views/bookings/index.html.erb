@@ -1,25 +1,19 @@
 <h1>Bookings#index</h1>
 
-
-<% @bookings.each do |booking| %>
-  <% @categories.each do |category| %>
-  div.
-  <h5>Start Date</h5>
-  <p><%= booking.start_date %></p>
-  <h6><strong>Name</strong></h6>
-  <p><%= category.name %></p>
-  <h6><strong>Description</strong></h6>
-  <p><%= category.description %></p>
-  <h5>End Date</h5>
-  <p><%= booking.end_date %></p>
+<% if @bookings.size > 0 %>
+  <% @bookings.each do |booking| %>
+    <% @categories.each do |category| %>
+    div.
+    <h5>Start Date</h5>
+    <p><%= booking.start_date %></p>
+    <h6><strong>Name</strong></h6>
+    <p><%= category.name %></p>
+    <h6><strong>Description</strong></h6>
+    <p><%= category.description %></p>
+    <h5>End Date</h5>
+    <p><%= booking.end_date %></p>
+    <% end %>
   <% end %>
 <% end %>
 
-<% #if policy(Booking).create? %>
-  <%#= link_to 'New Booking', 'http://localhost:3000/bookings/new.html' %>
-  <%#= link_to 'New Booking', new_category_booking_path %>
-<%# end %>
-
-<%#= link_to x.title, task_path(x) %> <%#= x.details %> <%#= link_to task_path(x), method: :delete, data: { confirm: "Are you sure you want to delete #{x.title}?" } do %>
-
-
+<p> Nothing to see here! </p>

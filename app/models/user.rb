@@ -10,4 +10,15 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :location, :gender, presence: true
   validates :age, presence: true,  numericality: { only_integer: true }
   has_one_attached :photo
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against:[:first_name, :last_name, :location, :age, :gender, :personality],
+    associated_against: {
+      categories:[:name]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
 end

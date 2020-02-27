@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :location, :gender, presence: true
   validates :age, presence: true,  numericality: { only_integer: true }
   has_one_attached :photo
-  geocoded_by :location
+
+    geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+
 end

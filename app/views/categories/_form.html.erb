@@ -1,0 +1,7 @@
+<%= simple_form_for @category do |f| %>
+  <%= f.input :name, label: "Select the category type of your preference", collection: Category::CATEGORIES, hint: "Please select a category" %>
+  <%= f.input :description, label: "Describe any important information", input_html: {maxlength: 100}, hint: "Add any important information"  %>
+  <%= f.input :price, input_html: { min: 100 }, hint: "State your rental price per hour"  %>
+  <%= f.input :photo, as: :file  %>
+  <%= f.submit "Create", class: 'btn btn-primary' %>
+<% end %>

@@ -3,14 +3,29 @@ class CategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @categories = Category.all
+    @categories = policy_scope(Category.all)
+        @users = User.geocoded #returns flats with coordinates
+
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+
+
+    end
   end
 
   def show
+    # skip_policy_scope
+    authorize set_category
+
   end
 
   def new
+    # raise
     @category = Category.new
+    authorize @category
   end
 
   def create
@@ -19,7 +34,8 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to root_path
     else
-      render :new
+      @categories = current_user.categories
+      render 'users/my_page'
     end
   end
 
@@ -38,6 +54,7 @@ class CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find(params[:id])
+    authorize @category
   end
 
   def category_params

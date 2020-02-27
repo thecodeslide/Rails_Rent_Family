@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
+
   def my_page
+    @category = Category.new
     @categories = current_user.categories
   end
-
+  
   def index
     if params[:query].present?
       sql_query = " \

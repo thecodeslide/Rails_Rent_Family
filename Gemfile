@@ -19,7 +19,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'pundit'
-
+gem 'geocoder'
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

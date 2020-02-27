@@ -4,12 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   GENDER = ["Male", "Female"]
-  PERSONALITY = ["movie", "reading", "chatting", "walk", "sightsee", "eating", "skiing", "sleeping", "scubadiving", "extreme sports", "cooking", "drinking" ]
+  PERSONALITY = ["movie", "reading", "chatting", "walk", "sightsee", "eating", "skiing", "sleeping", "scubadiving", "extreme sports", "cooking", "drinking"]
   has_many :categories
   has_many :bookings
   validates :first_name, :last_name, :location, :gender, presence: true
   validates :age, presence: true,  numericality: { only_integer: true }
   has_one_attached :photo
+
     geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
 end

@@ -7,7 +7,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    set_category
+    # skip_policy_scope
+    authorize set_category
   end
 
   def new

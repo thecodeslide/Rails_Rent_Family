@@ -4,11 +4,22 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = policy_scope(Category.all)
+        @users = User.geocoded #returns flats with coordinates
+
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+
+
+    end
   end
 
   def show
     # skip_policy_scope
     authorize set_category
+
   end
 
   def new

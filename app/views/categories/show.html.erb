@@ -1,20 +1,38 @@
 <div class="container-show">
-  <% if current_user.photo.attached? %>
-  <%= cl_image_tag current_user.photo.key %>
-  <% else %>
-  <% end %>
-  <div class="card-product">
-    <% if  @category.photo.attached? %>
-      <%= cl_image_tag @category.photo.key, height: 300, width: 400, crop: :fill %>
+  <div class="container-show-photo">
+    <% if @category.photo.attached? %>
+      <%= cl_image_tag @category.photo.key, class: "photo-cat-show", height: 200, width: 200, crop: :fill  %>
     <% else %>
+      <%= cl_image_tag "FEM2REZBr1aMmq8BWdXwvdat", class: "photo-cat-show", height: 200, width: 200, crop: :fill %>
     <% end %>
-  <div class="card-product-infos">
-    <h2><%= @category.name  %></h2>
-    <p><%= @category.description %></p>
-    <p><%= @category.price %></p>
-
+      <div class="container-show-data">
+        <h1>Information</h1>
+        <h2><%= @category.user.first_name %></h2>
+        <p><%= @category.user.age %></p>
+        <p><%= @category.user.personality%></p>
+      </div>
   </div>
-</div>
+    <div class="container-ca-show-map-info">
+      <div
+        id="map"
+        style="width: 100%;
+        height: 350px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+      <div class="container-show-data">
+        <h1>Description</h1>
+        <h2><%= @category.name  %></h2>
+        <p><%= @category.description %></p>
+        <p><%= @category.price %> 円</p>
+      </div>
+      <div class="container-cat-show-button">
+        <%= link_to new_category_booking_path(@category), class: "button-cat-show-rent" do %>
+          <span>Rent now!</span>
+        <% end %>
+      </div>
+  </div>
+
 
 </div>
 

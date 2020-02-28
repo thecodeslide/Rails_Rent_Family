@@ -3,7 +3,10 @@
     <%= link_to "Services", '#services', class: "nav-link active", id: "home-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "home", 'aria-selected': "true"  %>
   </li>
   <li class="nav-item">
-    <%= link_to "History", '#history', class: "nav-link", id: "profile-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "profile", 'aria-selected': "false"  %>
+    <%= link_to "Service History", '#history', class: "nav-link", id: "profile-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "profile", 'aria-selected': "false"  %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Bookings History", '#bookings', class: "nav-link", id: "booking-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "booking", 'aria-selected': "false"  %>
   </li>
   <li class="nav-item">
     <%= link_to "Create Service", '#create', class: "nav-link", id: "contact-tab", 'data-toggle': "tab", role: "tab", 'aria-controls': "contact", 'aria-selected': "false"  %>
@@ -14,24 +17,46 @@
     <%= render 'shared/mycategories' %>
   </div>
   <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="container-tab">
       <%  current_user.bookings_as_service.each do |booking| %>
         <% hours = booking.end_date - booking.start_date %>
         <% price = booking.category.price %>
-        <div class="container-tab">
+        <table style="width:100%", class="table-tab">
+          <tr>
+            <th class="th">Start Date</th>
+            <th class="th">End Date</th>
+            <th class="th">Total</th>
+          </tr>
+          <tr>
+            <td><%= booking.formatted_start_date %></td>
+            <td><%= booking.formatted_end_date %></td>
+            <td><%= amount = price * hours  %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="bookings" role="tabpanel" aria-labelledby="booking-tab">
+      <div class="container-tab">
+        <%  current_user.bookings.each do |booking| %>
+        <% hours = booking.end_date - booking.start_date %>
+        <% price = booking.category.price %>
           <table style="width:100%", class="table-tab">
             <tr>
               <th class="th">Start Date</th>
               <th class="th">End Date</th>
+              <th class="th">Price</th>
               <th class="th">Total</th>
             </tr>
             <tr>
-              <td><%= booking.formatted_start_date %></td>
-              <td><%= booking.formatted_end_date %></td>
-              <td><%= amount = price * hours  %></td>
+              <td><%= booking.start_date %></td>
+              <td><%= booking.end_date %></td>
+              <td><%= booking.category.price  %>　円</td>
+              <td><%= amount = price * hours  %>　円</td>
             </tr>
           </table>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
   </div>
   <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="contact-tab">
     <div class="button-add-tab">

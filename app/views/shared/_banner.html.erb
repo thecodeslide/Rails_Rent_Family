@@ -1,11 +1,13 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.pexels.com/photos/2253879/pexels-photo-2253879.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);">
   <div class="container" style='height: 50px;'>
+
     <div id="search_bar_container">
       <h1>FAMIMA</h1>
       <p><span id="banner-typed-text"></span></p>
-    <!-- search_bar begin -->
+      <%#= link_to "Rent now!", categories_path, class: "button-banner" %>
+      <!-- search_bar begin -->
       <div id="search_bar">
-        <%= form_tag 'index.html', method: :get do %>
+        <%= form_tag categories_path, method: :get do %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
@@ -14,6 +16,7 @@
           <%= submit_tag "Search", class: "btn btn-warning"%>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>

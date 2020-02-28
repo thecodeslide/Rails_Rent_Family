@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
     end
     geocode
   end
-  
+
   def geocode
     @users = User.geocoded #returns flats with coordinates
     @markers = @users.map do |user|
@@ -26,6 +26,12 @@ class CategoriesController < ApplicationController
     # skip_policy_scope
     # authorize set_category
     set_category
+    @markers = [
+      {
+        lat: @category.user.latitude ,
+        lng: @category.user.longitude
+      }
+    ]
   end
 
   def new

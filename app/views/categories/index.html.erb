@@ -1,4 +1,4 @@
- <div class="h1-index-category">
+<div class="h1-index-category">
   <h1>Services</h1>
 </div>
 <div class="cards-category-index">
@@ -10,8 +10,10 @@
       <p><%= category.description %></p>
       <p>￥<%= category.price %></p>
       <div class="d-flex justify-content-end">
-        <%= link_to category_path(category), id: "button-edit" do %>
-          <i class="far fa-plus-square"></i>
+        <% if policy(category).edit? %>
+          <%= link_to category_path(category), id: "button-edit" do %>
+            <i class="far fa-plus-square"></i>
+          <% end %>
         <% end %>
       </div>
     </div>

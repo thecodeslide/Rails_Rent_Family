@@ -36,6 +36,12 @@ class CategoriesController < ApplicationController
     # skip_policy_scope
     # authorize set_category
     set_category
+    @markers = [
+      {
+        lat: @category.user.latitude ,
+        lng: @category.user.longitude
+      }
+    ]
   end
 
   def new

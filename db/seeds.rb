@@ -30,10 +30,7 @@ puts "creating users"
     )
 end
 
-4.times do
-  start_date: Faker::Date.forward(days: 10)
-  end_date: Faker::Date.backward(days: 14)
-end
+
 
 
 urls = {
@@ -66,7 +63,16 @@ User.find_each do |user|
     category.save!
   end
 end
-
+User.find_each do |user|
+  4.times do
+    Booking.create!(
+     start_date: Date.today + rand(0..5),
+     end_date: Date.today + rand(6..15),
+     user: user,
+     category: Category.where.not(id: user.categories).sample
+     )
+  end
+end
 
 puts "done"
 

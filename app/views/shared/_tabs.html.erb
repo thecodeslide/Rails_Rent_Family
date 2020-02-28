@@ -34,12 +34,12 @@
             <% if booking.status == "pending" %>
               <td><%= simple_form_for booking do |f| %>
                     <%= f.input :status, as: :hidden, input_html: {value: "accepted"} %>
-                    <%= f.submit "Accept", class: "button-tab-accept" %>
+                    <%= f.submit "Accept", class: "button-tab-accept", data:{confirm: "Are you sure to accept?"} %>
                   <% end %>
               </td>
               <td><%= simple_form_for booking do |f| %>
                     <%= f.input :status, as: :hidden, input_html: {value: "rejected"} %>
-                    <%= f.submit "Reject", class: "button-tab-reject" %>
+                    <%= f.submit "Reject", class: "button-tab-reject", data:{confirm: "Are you sure to reject?"} %>
                   <% end %>
               </td>
               <% else %>
@@ -86,7 +86,6 @@
     </div>
   </div>
 </div>
-
 
 
 

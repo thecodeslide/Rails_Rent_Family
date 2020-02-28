@@ -3,14 +3,24 @@ class CategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:category]
-      @categories = policy_scope(Category.where(name: params[:category]))
+    if params[:query].present?
+      sql_query = " \
+        users.first_name @@ :query \
+        OR users.last_name @@ :query \
+        OR users.location @@ :query \
+        OR users.gender @@ :query \
+        OR users.personality @@ :query \
+        OR categories.name @@ :query
+      "
+      @categories = policy_scope(Category).joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
       @categories = policy_scope(Category.all)
     end
     geocode
+
+
   end
-  
+
   def geocode
     @users = User.geocoded #returns flats with coordinates
     @markers = @users.map do |user|

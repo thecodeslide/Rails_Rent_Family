@@ -24,6 +24,7 @@ class CategoriesController < ApplicationController
 
   def show
     # skip_policy_scope
+    # authorize set_category
     set_category
   end
 

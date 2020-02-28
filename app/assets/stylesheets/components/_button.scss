@@ -60,3 +60,43 @@ width: 75px;
   transform: translateY(4px);
 
 }
+
+.button-cat-show-rent {
+  border-radius: 4px;
+  background-color: rgb(241, 70, 35);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.button-cat-show-rent span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-cat-show-rent span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button-cat-show-rent:hover span {
+  padding-right: 25px;
+}
+
+.button-cat-show-rent:hover span:after {
+  opacity: 1;
+  right: 0;
+}

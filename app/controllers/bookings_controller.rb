@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.category = @category
     if @booking.save
-      redirect_to category_bookings_path(@booking)
+      redirect_to my_page_path
     else
       render :new
     end

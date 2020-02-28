@@ -7,8 +7,8 @@
   <div class="card-product">
     <%= cl_image_tag(category.photo.key, width: 300, height: 300, crop: :fill) %>
     <div class="card-product-infos">
-      <h2><%= category.name  %></h2>
-      <p><%= category.description %></p>
+      <h2>Age: <%= category.name  %></h2>
+      <p>Description: <%= category.description %></p>
       <p>￥<%= category.price %></p>
       <div class="d-flex justify-content-end">
         <%# if policy(category).edit? %>

@@ -100,3 +100,46 @@ width: 75px;
   opacity: 1;
   right: 0;
 }
+
+.button-tab-accept {
+  padding: 5px 10px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: blue;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button-tab-accept:hover {background-color: rgb(11, 0, 170)}
+
+.button-tab-accept:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button-tab-reject {
+  padding: 5px 10px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: red;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button-tab-reject:hover {background-color: rgb(193, 13, 16)}
+
+.button-tab-reject:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+

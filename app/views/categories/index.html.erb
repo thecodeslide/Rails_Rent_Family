@@ -3,6 +3,7 @@
 </div>
 <div class="cards-category-index">
   <% @categories.each do |category|  %>
+  <%#= link_to "", category_path(category), class: "card-link" %>
   <div class="card-product">
     <%= cl_image_tag(category.photo.key, width: 300, height: 300, crop: :fill) %>
     <div class="card-product-infos">
@@ -10,11 +11,11 @@
       <p><%= category.description %></p>
       <p>￥<%= category.price %></p>
       <div class="d-flex justify-content-end">
-        <% if policy(category).edit? %>
+        <%# if policy(category).edit? %>
           <%= link_to category_path(category), id: "button-edit" do %>
             <i class="far fa-plus-square"></i>
           <% end %>
-        <% end %>
+        <%# end %>
       </div>
     </div>
   </div>

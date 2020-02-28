@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create, :new, :edit]
   end
 
-  resources :bookings, only: :index
+  resources :bookings, only: [:index, :update]
 
   get 'my_page', to: 'users#my_page', as: :my_page
   get 'index', to: 'users#index', as: :search_result #added

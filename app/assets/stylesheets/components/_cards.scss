@@ -87,6 +87,11 @@
   width: 100%;
 }
 
+.category-cards-no-link-styles {
+  text-decoration: none !important;
+  color: black !important;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

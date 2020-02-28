@@ -18,8 +18,8 @@ personality = ["movie", "reading", "chatting", "walk", "sightsee", "eating", "sk
 puts "creating users"
 15.times do
   User.create!(
-    first_name: Faker::Games::Pokemon.unique.name,
-    last_name: Faker::Games::SuperSmashBros.unique.fighter,
+    first_name: Faker::Name.unique.first_name ,
+    last_name: Faker::Name.unique.last_name ,
     location: Faker::Nation.capital_city,
     gender: gender.sample,
     age: rand(10..80),

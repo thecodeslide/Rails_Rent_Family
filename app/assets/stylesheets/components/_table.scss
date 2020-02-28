@@ -1,10 +1,11 @@
 .table-tab {
-  background: rgb(183, 181, 188);
+  background: white;
     th {
       text-decoration: underline;
+      padding: 24px;
     }
     td {
-      margin:16px;
+      padding: 24px;
     }
 }
 .container-tab {

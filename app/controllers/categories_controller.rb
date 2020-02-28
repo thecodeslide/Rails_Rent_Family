@@ -7,17 +7,17 @@ class CategoriesController < ApplicationController
       @categories = policy_scope(Category.where(name: params[:category]))
     else
       @categories = policy_scope(Category.all)
-
-    @categories = policy_scope(Category.all)
-        @users = User.geocoded #returns flats with coordinates
-
+    end
+    geocode
+  end
+  
+  def geocode
+    @users = User.geocoded #returns flats with coordinates
     @markers = @users.map do |user|
       {
         lat: user.latitude,
         lng: user.longitude
       }
-
-
     end
   end
 

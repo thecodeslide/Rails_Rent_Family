@@ -23,7 +23,7 @@ puts "creating users"
     location: Faker::Games::Pokemon.unique.location,
     gender: gender.sample,
     age: rand(10..80),
-    personality: personality.sample,
+    personality: personality.sample(3).join(", "),
     active: true,
     email: Faker::Internet.email,
     password: "123456"

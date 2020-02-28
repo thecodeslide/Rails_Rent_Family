@@ -8,22 +8,22 @@ class CategoriesController < ApplicationController
     else
       @categories = policy_scope(Category.all)
 
-    @categories = policy_scope(Category.all)
-        @users = User.geocoded #returns flats with coordinates
+      @categories = policy_scope(Category.all)
+          @users = User.geocoded #returns flats with coordinates
 
-    @markers = @users.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude
-      }
+      @markers = @users.map do |user|
+        {
+          lat: user.latitude,
+          lng: user.longitude
+        }
 
-
+      end
     end
   end
 
   def show
     # skip_policy_scope
-    authorize set_category
+    # authorize set_category
 
   end
 

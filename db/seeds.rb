@@ -20,7 +20,7 @@ puts "creating users"
   User.create!(
     first_name: Faker::Games::Pokemon.unique.name,
     last_name: Faker::Games::SuperSmashBros.unique.fighter,
-    location: Faker::Games::Pokemon.unique.location,
+    location: Faker::Nation.capital_city,
     gender: gender.sample,
     age: rand(10..80),
     personality: personality.sample,
@@ -29,6 +29,9 @@ puts "creating users"
     password: "123456"
     )
 end
+
+
+
 
 urls = {
   "Grandpa" => ['https://www.thewrap.com/wp-content/uploads/2017/12/AngryGrandpa.jpg'],
@@ -60,7 +63,16 @@ User.find_each do |user|
     category.save!
   end
 end
-
+User.find_each do |user|
+  4.times do
+    Booking.create!(
+     start_date: Date.today + rand(0..5),
+     end_date: Date.today + rand(6..15),
+     user: user,
+     category: Category.where.not(id: user.categories).sample
+     )
+  end
+end
 
 puts "done"
 

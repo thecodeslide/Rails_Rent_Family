@@ -65,7 +65,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to category_path
+      redirect_to my_page_path
     else
       render :edit
     end

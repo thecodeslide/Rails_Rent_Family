@@ -18,44 +18,60 @@
   </div>
   <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="profile-tab">
     <div class="container-tab">
-      <%  current_user.bookings_as_service.each do |booking| %>
-        <% hours = booking.end_date - booking.start_date %>
-        <% price = booking.category.price %>
-        <table style="width:100%", class="table-tab">
-          <tr>
-            <th class="th">Start Date</th>
-            <th class="th">End Date</th>
-            <th class="th">Total</th>
-          </tr>
+      <table style="width:100%", class="table-tab">
+        <tr>
+          <th class="th">Start Date</th>
+          <th class="th">End Date</th>
+          <th class="th">Total</th>
+        </tr>
+        <%  current_user.bookings_as_service.each do |booking| %>
+          <% hours = booking.end_date - booking.start_date %>
+          <% price = booking.category.price %>
           <tr>
             <td><%= booking.formatted_start_date %></td>
             <td><%= booking.formatted_end_date %></td>
             <td><%= amount = price * hours  %></td>
+            <% if booking.status == "pending" %>
+              <td><%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: {value: "accepted"} %>
+                    <%= f.submit "Accept", class: "button-tab-accept" %>
+                  <% end %>
+              </td>
+              <td><%= simple_form_for booking do |f| %>
+                    <%= f.input :status, as: :hidden, input_html: {value: "rejected"} %>
+                    <%= f.submit "Reject", class: "button-tab-reject" %>
+                  <% end %>
+              </td>
+              <% else %>
+              <td><%= booking.status %></td>
+              <% end %>
           </tr>
-        </table>
-      <% end %>
+        <% end %>
+      </table>
     </div>
   </div>
   <div class="tab-pane fade" id="bookings" role="tabpanel" aria-labelledby="booking-tab">
       <div class="container-tab">
-        <%  current_user.bookings.each do |booking| %>
-        <% hours = booking.end_date - booking.start_date %>
-        <% price = booking.category.price %>
-          <table style="width:100%", class="table-tab">
-            <tr>
-              <th class="th">Start Date</th>
-              <th class="th">End Date</th>
-              <th class="th">Price</th>
-              <th class="th">Total</th>
-            </tr>
+        <table style="width:100%", class="table-tab">
+          <tr>
+            <th class="th">Start Date</th>
+            <th class="th">End Date</th>
+            <th class="th">Price</th>
+            <th class="th">Total</th>
+            <th class="th">Status</th>
+          </tr>
+          <%  current_user.bookings.each do |booking| %>
+            <% hours = booking.end_date - booking.start_date %>
+            <% price = booking.category.price %>
             <tr>
               <td><%= booking.start_date %></td>
               <td><%= booking.end_date %></td>
               <td><%= booking.category.price  %>　円</td>
               <td><%= amount = price * hours  %>　円</td>
+              <td><%= booking.status %></td>
             </tr>
-          </table>
-        <% end %>
+          <% end %>
+        </table>
       </div>
   </div>
   <div class="tab-pane fade" id="create" role="tabpanel" aria-labelledby="contact-tab">

@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: :update
+
   def index
     @bookings = policy_scope(current_user.bookings)
     @booking = Booking.new
@@ -30,21 +32,22 @@ class BookingsController < ApplicationController
   end
 
   def update
-    # if @booking.update(booking_params)
-    #   redirect_to category_booking_path
-    # else
-    #   render :edit
-    # end
+    if @booking.update(booking_params)
+      redirect_to my_page_path
+    else
+      render 'users/my_page'
+    end
   end
 
   private
   # strong params!
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 
   def set_booking
-    @booking = authorize Booking.find(params[:id])
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def set_category

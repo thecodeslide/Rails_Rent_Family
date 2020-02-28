@@ -5,7 +5,7 @@
     <%#= link_to "Rent now!", categories_path, class: "button-banner" %>
     <!-- search_bar begin -->
     <div id="search_bar">
-      <%= form_tag 'index.html', method: :get do %>
+      <%= form_tag categories_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",

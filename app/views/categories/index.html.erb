@@ -10,8 +10,10 @@
     <p><%= category.description %></p>
     <p>￥<%= category.price %></p>
     <div class="d-flex justify-content-end">
-      <%= link_to edit_category_path(category), id: "button-edit" do %>
-        <i class="far fa-plus-square"></i>
+      <% if policy(category).edit? %>
+        <%= link_to edit_category_path(category), id: "button-edit" do %>
+          <i class="far fa-plus-square"></i>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -8,17 +8,16 @@ class CategoriesController < ApplicationController
 
   def show
     # skip_policy_scope
-    authorize set_category
+    set_category
   end
 
   def new
     # raise
-    @category = Category.new
-    authorize @category
+    @category = authorize Category.new
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = authorize Category.new(category_params)
     @category.user = current_user
     if @category.save
       redirect_to root_path
@@ -42,8 +41,7 @@ class CategoriesController < ApplicationController
   private
 
   def set_category
-    @category = Category.find(params[:id])
-    authorize @category
+    @category = authorize Category.find(params[:id])
   end
 
   def category_params

@@ -6,8 +6,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new
-    authorize @booking
+    @booking = authorize Booking.new
     @category = set_category
   end
 
@@ -45,8 +44,7 @@ class BookingsController < ApplicationController
   end
 
   def set_booking
-    @booking = Booking.find(params[:id])
-    authorize @booking
+    @booking = authorize Booking.find(params[:id])
   end
 
   def set_category

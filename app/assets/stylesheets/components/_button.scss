@@ -34,3 +34,29 @@ width: 75px;
   padding: 16px;
 }
 
+.button-banner {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: rgb(80, 173, 229);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  text-decoration: none;
+
+}
+
+.button-banner:hover {
+  background-color: rgb(58, 129, 170);
+  text-decoration: none;
+}
+
+.button-banner:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+
+}

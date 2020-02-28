@@ -3,7 +3,22 @@ class CategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @categories = policy_scope(Category.all)
+    if params[:category]
+      @categories = policy_scope(Category.where(name: params[:category]))
+    else
+      @categories = policy_scope(Category.all)
+    end
+    geocode
+  end
+  
+  def geocode
+    @users = User.geocoded #returns flats with coordinates
+    @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 
   def show
